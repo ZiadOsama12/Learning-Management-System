@@ -2,6 +2,7 @@ package com.learningmanagementsystem.presentation.controllers;
 
 import com.learningmanagementsystem.application.usecases.GetUserProgressUseCase;
 import com.learningmanagementsystem.application.usecases.UpdateUserProgressUseCase;
+import com.learningmanagementsystem.domain.entity.Progress;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -18,9 +19,10 @@ public class ProgressController {
         this.updateUserProgressUseCase = updateUserProgressUseCase;
     }
 
-    @GetMapping()
-    public ResponseEntity<?> getUserProgress(){
-        return ResponseEntity.ok().build();
+    @GetMapping("/courses/{courseId}")
+    public ResponseEntity<?> getUserProgress(@PathVariable int courseId) {
+        Progress progress = getUserProgressUseCase.execute(courseId);
+        return ResponseEntity.ok(progress);
     }
 
     @PutMapping
