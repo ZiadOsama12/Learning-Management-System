@@ -1,5 +1,6 @@
 package com.learningmanagementsystem.domain.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -38,7 +39,8 @@ public class Module {
     private Course course;
 
     @OneToMany(mappedBy = "module")
-    @JsonIgnore
+//    @JsonIgnore
+    @JsonBackReference
     private List<Lesson> lessons;
 
 }
