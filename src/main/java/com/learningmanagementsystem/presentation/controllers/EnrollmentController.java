@@ -1,6 +1,7 @@
 package com.learningmanagementsystem.presentation.controllers;
 
 import com.learningmanagementsystem.application.usecases.EnrollUserInCourseUseCase;
+import com.learningmanagementsystem.domain.entity.Users;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -16,9 +17,10 @@ public class EnrollmentController {
         enrollUserInCourseUseCase = enrollUseCase;
     }
 
-    @PostMapping
-    public ResponseEntity<?>enrollUser() {
-        return ResponseEntity.ok().build();
+    @PostMapping("/courses/{courseId}")
+    public ResponseEntity<?>enrollUser(@PathVariable long courseId) {
+        Users user = enrollUserInCourseUseCase.execute(courseId);
+        return ResponseEntity.ok(user);
     }
 
     @GetMapping("/{userId}")

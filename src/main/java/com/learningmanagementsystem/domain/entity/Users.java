@@ -22,7 +22,15 @@ public class Users {
     @OneToMany(mappedBy = "user", fetch = FetchType.EAGER) // Field  in UseRole
     private Set<UserRole> roles;
 
+    @OneToMany(mappedBy = "user", cascade = CascadeType.PERSIST)
+    private Set<Enrollment> courses;
+
     public void addRole(UserRole role) {
         this.roles.add(role);
+    }
+
+    public void addCourse(Enrollment enrollment) {
+        this.courses.add(enrollment);
+//        enrollment.setUser(this);
     }
 }

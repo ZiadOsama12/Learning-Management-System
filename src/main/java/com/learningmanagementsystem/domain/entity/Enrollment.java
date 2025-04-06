@@ -1,10 +1,19 @@
 package com.learningmanagementsystem.domain.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import java.time.LocalDateTime;
 
 @Entity
+@Setter
+@Getter
+@NoArgsConstructor
+@AllArgsConstructor
 @Table(name = "enrollments")
 public class Enrollment {
 
@@ -24,7 +33,7 @@ public class Enrollment {
 //    @Column(name = "course_id", nullable = false)
 //    private Integer courseId;
 
-    @Column(name = "enrolled_at", columnDefinition = "DATETIME2 DEFAULT GETDATE()")
+    @Column(name = "enrolled_at", insertable = false, updatable = false, columnDefinition = "DATETIME2 DEFAULT GETDATE()")
     private LocalDateTime enrolledAt;
 
     @Column(name = "status", length = 20, nullable = false)
@@ -41,73 +50,20 @@ public class Enrollment {
     @ManyToOne
     @MapsId("userId")
     @JoinColumn(name = "user_id")
+    @JsonIgnore
     private Users user;
 
     @ManyToOne
     @MapsId("courseId")
     @JoinColumn(name = "course_id")
+    @JsonIgnore
     private Course course;
 
-    // Getters and Setters
-    public void setId(EnrollmentKey id) {
+    public Enrollment(EnrollmentKey id, Users user, Course course, String status) {
         this.id = id;
-    }
-    public EnrollmentKey getId() {
-        return id;
-    }
-//    public Integer getId() {
-//        return id;
-//    }
-//
-//    public void setId(Integer id) {
-//        this.id = id;
-//    }
-//
-//    public Integer getUserId() {
-//        return userId;
-//    }
-//
-//    public void setUserId(Integer userId) {
-//        this.userId = userId;
-//    }
-
-//    public Integer getCourseId() {
-//        return courseId;
-//    }
-//
-//    public void setCourseId(Integer courseId) {
-//        this.courseId = courseId;
-//    }
-
-    public LocalDateTime getEnrolledAt() {
-        return enrolledAt;
-    }
-
-    public void setEnrolledAt(LocalDateTime enrolledAt) {
-        this.enrolledAt = enrolledAt;
-    }
-
-    public String getStatus() {
-        return status;
-    }
-
-    public void setStatus(String status) {
+        this.user = user;
+        this.course = course;
         this.status = status;
     }
 
-    public Users getUser() {
-        return user;
-    }
-
-    public void setUser(Users user) {
-        this.user = user;
-    }
-
-    public Course getCourse() {
-        return course;
-    }
-
-    public void setCourse(Course course) {
-        this.course = course;
-    }
-}
+  }

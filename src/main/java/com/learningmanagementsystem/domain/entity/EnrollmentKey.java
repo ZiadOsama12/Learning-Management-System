@@ -2,35 +2,26 @@ package com.learningmanagementsystem.domain.entity;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Embeddable;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import java.io.Serializable;
 import java.util.Objects;
 
 @Embeddable
-class EnrollmentKey implements Serializable {
+@NoArgsConstructor
+@AllArgsConstructor
+@Setter
+@Getter
+public class EnrollmentKey implements Serializable {
 
     @Column(name = "user_id")
-    private Long userId;
+    private long userId;
 
     @Column(name = "course_id")
-    private Long courseId;
-
-
-    public Long getCourseId() {
-        return courseId;
-    }
-
-    public void setCourseId(Long courseId) {
-        this.courseId = courseId;
-    }
-
-    public Long getUserId() {
-        return userId;
-    }
-
-    public void setUserId(Long userId) {
-        this.userId = userId;
-    }
+    private long courseId;
 
     @Override
     public boolean equals(Object o) {
