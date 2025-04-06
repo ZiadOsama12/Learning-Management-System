@@ -4,23 +4,25 @@ import com.learningmanagementsystem.application.dto.CreateCourseRequestDTO;
 import com.learningmanagementsystem.application.dto.CreateCourseResponseDTO;
 import com.learningmanagementsystem.application.usecases.CreateCourseUseCase;
 import com.learningmanagementsystem.application.usecases.GetCourseAssessmentsUseCase;
-import com.learningmanagementsystem.application.usecases.GetCourseByIdUseCase;
+import com.learningmanagementsystem.application.usecases.GetCourseUseCase;
 import com.learningmanagementsystem.domain.entity.Course;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/api/v1/courses")
 public class CourseController {
     private CreateCourseUseCase createCourseUseCase;
-    private GetCourseByIdUseCase getCourseByIdUseCase;
+    private GetCourseUseCase getCourseUseCase;
     private GetCourseAssessmentsUseCase getCourseAssessmentsUseCase;
 
     @Autowired
-    public CourseController(CreateCourseUseCase createCourseUseCase, GetCourseByIdUseCase getCourseByIdUseCase, GetCourseAssessmentsUseCase getCourseAssessmentsUseCase) {
+    public CourseController(CreateCourseUseCase createCourseUseCase, GetCourseUseCase getCourseUseCase, GetCourseAssessmentsUseCase getCourseAssessmentsUseCase) {
         this.createCourseUseCase = createCourseUseCase;
-        this.getCourseByIdUseCase = getCourseByIdUseCase;
+        this.getCourseUseCase = getCourseUseCase;
         this.getCourseAssessmentsUseCase = getCourseAssessmentsUseCase;
     }
 
@@ -40,10 +42,15 @@ public class CourseController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<?> getCourseById() {
-        return ResponseEntity.ok().build();
+    public ResponseEntity<?> getCourseById(@PathVariable Long id) {
+        Course course = getCourseUseCase.execute(id);
+        return ResponseEntity.ok(course);
     }
-
+    @GetMapping("")
+    public ResponseEntity<?> getAllCourse() {
+        List<Course> courses = getCourseUseCase.execute();
+        return ResponseEntity.ok(courses);
+    }
     @GetMapping("/{id}/assessments")
     public ResponseEntity<?> getCourseAssessments() {
         return ResponseEntity.ok().build();
