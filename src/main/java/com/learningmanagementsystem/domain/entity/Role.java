@@ -1,10 +1,18 @@
 package com.learningmanagementsystem.domain.entity;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import java.time.LocalDateTime;
 // Check Again Auth. Using Roles..............
 @Entity
+@Setter
+@Getter
+@AllArgsConstructor
+@NoArgsConstructor
 @Table(name = "roles")
 public class Role {
 
@@ -25,43 +33,4 @@ public class Role {
     @Column(name = "updated_at", columnDefinition = "DATETIME2 DEFAULT GETDATE()")
     private LocalDateTime updatedAt;
 
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public LocalDateTime getCreatedAt() {
-        return createdAt;
-    }
-
-    public void setCreatedAt(LocalDateTime createdAt) {
-        this.createdAt = createdAt;
-    }
-
-    public LocalDateTime getUpdatedAt() {
-        return updatedAt;
-    }
-
-    public void setUpdatedAt(LocalDateTime updatedAt) {
-        this.updatedAt = updatedAt;
-    }
 }

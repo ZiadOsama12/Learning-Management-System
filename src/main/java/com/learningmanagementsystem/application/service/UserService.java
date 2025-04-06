@@ -44,8 +44,12 @@ public class UserService {
     }
 
     public JwtResponseDTO verify(Users user) {
+
         Authentication authentication =
                 authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(user.getUsername(), user.getPassword()));
+
+        System.out.println("TEST AUTHENTICATION");
+
 
         if (authentication.isAuthenticated()) {
             String accessToken = jwtService.generateAccessToken(user.getUsername());
@@ -87,8 +91,10 @@ public class UserService {
             return new JwtResponseDTO(accessToken, refreshToken);
 //            return new ResponseEntity(accessToken, refreshToken, "New token generated"), HttpStatus.OK);
         }
-
         throw new RuntimeException("Invalid refresh token");
+    }
+    public Users findById(int id) {
+        return userRepo.findById((long) id).orElse(null);
     }
 }
 

@@ -37,6 +37,7 @@ public class SecurityConfig {
                 .authorizeHttpRequests(request ->
                         request.requestMatchers("/api/v1/register/**","/api/v1/login/**",
                                         "/api/v1/refresh_token/**").permitAll()
+                                .requestMatchers("/api/v1/users/**").hasAuthority("admin")
                                 .anyRequest().authenticated())
                                 .formLogin(Customizer.withDefaults()) // for web
                                 .httpBasic(Customizer.withDefaults())// for postman

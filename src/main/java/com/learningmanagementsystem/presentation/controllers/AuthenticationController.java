@@ -28,22 +28,25 @@ public class AuthenticationController {
     public CsrfToken getCsrfToken(HttpServletRequest request) {
         return (CsrfToken) request.getAttribute(CsrfToken.class.getName()); // header =
     }
+
     @PostMapping("/login")
     public ResponseEntity<?> login(@RequestBody Users user) {
-
         return ResponseEntity.ok(userService.verify(user));
     }
+
     @PostMapping("/register")
     public Users register(@RequestBody Users user) {
         userService.save(user);
         return user;
     }
+
     @PostMapping("/refresh_token")
     public ResponseEntity<?> refreshToken(
             HttpServletRequest request,
             HttpServletResponse response
-    ) {
+    )
+    {
 
-        return  ResponseEntity.ok(userService.refreshToken(request, response));
+        return ResponseEntity.ok(userService.refreshToken(request, response));
     }
 }
