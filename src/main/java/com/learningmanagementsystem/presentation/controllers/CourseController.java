@@ -3,7 +3,7 @@ package com.learningmanagementsystem.presentation.controllers;
 import com.learningmanagementsystem.application.dto.CreateCourseRequestDTO;
 import com.learningmanagementsystem.application.dto.CreateCourseResponseDTO;
 import com.learningmanagementsystem.application.usecases.CreateCourseUseCase;
-import com.learningmanagementsystem.application.usecases.GetCourseAssessmentsUseCase;
+import com.learningmanagementsystem.application.usecases.GetLessonAssessmentsUseCase;
 import com.learningmanagementsystem.application.usecases.GetCourseUseCase;
 import com.learningmanagementsystem.domain.entity.Course;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,13 +17,13 @@ import java.util.List;
 public class CourseController {
     private CreateCourseUseCase createCourseUseCase;
     private GetCourseUseCase getCourseUseCase;
-    private GetCourseAssessmentsUseCase getCourseAssessmentsUseCase;
+    private GetLessonAssessmentsUseCase getLessonAssessmentsUseCase;
 
     @Autowired
-    public CourseController(CreateCourseUseCase createCourseUseCase, GetCourseUseCase getCourseUseCase, GetCourseAssessmentsUseCase getCourseAssessmentsUseCase) {
+    public CourseController(CreateCourseUseCase createCourseUseCase, GetCourseUseCase getCourseUseCase, GetLessonAssessmentsUseCase getLessonAssessmentsUseCase) {
         this.createCourseUseCase = createCourseUseCase;
         this.getCourseUseCase = getCourseUseCase;
-        this.getCourseAssessmentsUseCase = getCourseAssessmentsUseCase;
+        this.getLessonAssessmentsUseCase = getLessonAssessmentsUseCase;
     }
 
     @PostMapping()
@@ -51,8 +51,5 @@ public class CourseController {
         List<Course> courses = getCourseUseCase.execute();
         return ResponseEntity.ok(courses);
     }
-    @GetMapping("/{id}/assessments")
-    public ResponseEntity<?> getCourseAssessments() {
-        return ResponseEntity.ok().build();
-    }
+
 }

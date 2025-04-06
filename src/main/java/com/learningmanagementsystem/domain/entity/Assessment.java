@@ -1,12 +1,21 @@
 package com.learningmanagementsystem.domain.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonSetter;
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
 import java.util.List;
 
 @Entity
 @Table(name = "assessments")
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class Assessment {
 
     @Id
@@ -23,59 +32,13 @@ public class Assessment {
     @Column(name = "created_at", columnDefinition = "DATETIME2 DEFAULT GETDATE()")
     private LocalDateTime createdAt;
 
-    @ManyToOne
-    @JoinColumn(name = "lesson_id", insertable = false, updatable = false)
+    @ManyToOne(fetch = FetchType.LAZY) // by default fetch type is eager so even if you type @JsonIgnore..it will execute the select statement. @JsonIgnore only prevent the Cycle.
+    @JoinColumn(name = "lesson_id", insertable = false, updatable = false) // even if you type some @Query in the Repo. you must also type FetchType.LAZY.
+    @JsonIgnore // Update later
     private Lesson lesson;
 
-    @OneToMany(mappedBy = "assessment")
+    @OneToMany(mappedBy = "assessment", fetch = FetchType.LAZY)
+    @JsonIgnore // update later
     private List<Question> questions;
 
-    // Getters and Setters
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public Integer getLessonId() {
-        return lessonId;
-    }
-
-    public void setLessonId(Integer lessonId) {
-        this.lessonId = lessonId;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public LocalDateTime getCreatedAt() {
-        return createdAt;
-    }
-
-    public void setCreatedAt(LocalDateTime createdAt) {
-        this.createdAt = createdAt;
-    }
-
-    public Lesson getLesson() {
-        return lesson;
-    }
-
-    public void setLesson(Lesson lesson) {
-        this.lesson = lesson;
-    }
-
-    public List<Question> getQuestions() {
-        return questions;
-    }
-
-    public void setQuestions(List<Question> questions) {
-        this.questions = questions;
-    }
-}
+   }

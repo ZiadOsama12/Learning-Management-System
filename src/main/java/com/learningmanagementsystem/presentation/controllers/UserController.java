@@ -4,7 +4,7 @@ import com.learningmanagementsystem.application.dto.AssignRoleRequestDTO;
 import com.learningmanagementsystem.application.service.UserService;
 import com.learningmanagementsystem.application.usecases.AssignRoleToUserUseCase;
 import com.learningmanagementsystem.application.usecases.CreateCourseUseCase;
-import com.learningmanagementsystem.application.usecases.GetCourseAssessmentsUseCase;
+import com.learningmanagementsystem.application.usecases.GetLessonAssessmentsUseCase;
 import com.learningmanagementsystem.domain.entity.Users;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -15,13 +15,13 @@ import org.springframework.web.bind.annotation.*;
 public class UserController {
     private final UserService userService;
     //    private CreateUserUseCase createCourseUseCase;
-    private GetCourseAssessmentsUseCase getCourseAssessmentsUseCase;
+    private GetLessonAssessmentsUseCase getLessonAssessmentsUseCase;
     private AssignRoleToUserUseCase assignRoleToUserUseCase;
 
     @Autowired
-    public UserController(CreateCourseUseCase createCourseUseCase, GetCourseAssessmentsUseCase getCourseAssessmentsUseCase, AssignRoleToUserUseCase assignRoleToUserUseCase, UserService userService) {
+    public UserController(CreateCourseUseCase createCourseUseCase, GetLessonAssessmentsUseCase getLessonAssessmentsUseCase, AssignRoleToUserUseCase assignRoleToUserUseCase, UserService userService) {
 //        this.createCourseUseCase = createCourseUseCase;
-        this.getCourseAssessmentsUseCase = getCourseAssessmentsUseCase;
+        this.getLessonAssessmentsUseCase = getLessonAssessmentsUseCase;
         this.assignRoleToUserUseCase = assignRoleToUserUseCase;
         this.userService = userService;
     }
