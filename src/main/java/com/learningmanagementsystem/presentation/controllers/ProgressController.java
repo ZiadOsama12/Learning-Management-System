@@ -26,8 +26,9 @@ public class ProgressController {
     }
 
     @PutMapping
-    public ResponseEntity<?> updateUserProgress(){
-        return ResponseEntity.ok().build();
+    public ResponseEntity<?> updateUserProgress(@RequestBody Progress progress) {
+        Progress updatedProgress = updateUserProgressUseCase.execute(progress);
+        return ResponseEntity.ok(updatedProgress);
     }
 
 }

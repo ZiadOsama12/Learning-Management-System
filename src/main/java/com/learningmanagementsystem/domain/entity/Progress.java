@@ -3,6 +3,8 @@ package com.learningmanagementsystem.domain.entity;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
+import org.springframework.data.annotation.LastModifiedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import java.time.LocalDateTime;
 
@@ -11,6 +13,7 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @Setter
 @Getter
+@EntityListeners(AuditingEntityListener.class)
 @Table(name = "progress")
 public class Progress {
 
@@ -37,7 +40,8 @@ public class Progress {
     @Column(name = "progress_percentage")
     private Float progressPercentage;
 
-    @Column(name = "last_updated", insertable = false, updatable = false, columnDefinition = "DATETIME2 DEFAULT GETDATE()")
+    @LastModifiedDate
+    @Column(name = "last_updated", insertable = false, columnDefinition = "DATETIME2 DEFAULT GETDATE()")
     private LocalDateTime lastUpdated;
 
     @ManyToOne

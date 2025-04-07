@@ -21,23 +21,6 @@ public class ProgressKey {
     @Column(name = "course_id")
     private Long courseId;
 
-
-    public Long getCourseId() {
-        return courseId;
-    }
-
-    public void setCourseId(Long courseId) {
-        this.courseId = courseId;
-    }
-
-    public Long getUserId() {
-        return userId;
-    }
-
-    public void setUserId(Long userId) {
-        this.userId = userId;
-    }
-
     @Override
     public boolean equals(Object obj) {
         if (this == obj) return true;
