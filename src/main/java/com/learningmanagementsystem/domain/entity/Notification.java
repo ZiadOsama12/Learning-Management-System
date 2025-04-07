@@ -26,14 +26,17 @@ public class Notification {
     @Column(name = "message", columnDefinition = "TEXT", nullable = false)
     private String message;
 
-    @Column(name = "is_read", columnDefinition = "BIT DEFAULT 0")
+    @Column(name = "is_read", insertable = false)
     private Boolean isRead;
 
-    @Column(name = "created_at", columnDefinition = "DATETIME2 DEFAULT GETDATE()")
+    @Column(name = "created_at", insertable = false, updatable = false)
     private LocalDateTime createdAt;
 
     @ManyToOne
     @JoinColumn(name = "user_id", insertable = false, updatable = false)
     @JsonIgnore
     private Users user;
+
+    @Column(name = "user_id")
+    private int userId;
 }

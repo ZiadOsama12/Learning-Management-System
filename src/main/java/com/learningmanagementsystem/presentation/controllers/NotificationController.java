@@ -1,5 +1,6 @@
 package com.learningmanagementsystem.presentation.controllers;
 
+import com.learningmanagementsystem.application.dto.SendNotificationRequestDTO;
 import com.learningmanagementsystem.application.usecases.GetUserNotificationsUseCase;
 import com.learningmanagementsystem.application.usecases.SendNotificationUseCase;
 import com.learningmanagementsystem.domain.entity.Notification;
@@ -24,9 +25,10 @@ public class NotificationController {
         this.getUserNotificationsUseCase = getUserNotificationsUseCase;
     }
 
-    @PostMapping
-    public ResponseEntity<?> sendNotification(){
-        return ResponseEntity.ok().build();
+    @PostMapping()
+    public ResponseEntity<?> sendNotification(@RequestBody SendNotificationRequestDTO notificationRequestDTO) {
+        Notification notification = sendNotificationUseCase.execute(notificationRequestDTO);
+        return ResponseEntity.ok(notification);
     }
     @GetMapping
     public ResponseEntity<?> getUserNotifications(@RequestParam("is_read") String isRead){

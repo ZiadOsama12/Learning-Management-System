@@ -1,8 +1,14 @@
 package com.learningmanagementsystem.domain.entity;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Entity
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 @Table(name = "options")
 public class Option {
     @Id
@@ -12,21 +18,4 @@ public class Option {
 
     @Column(name = "option_text", columnDefinition = "TEXT", nullable = false)
     private String optionText;
-
-    // Getters and Setters
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public String getOptionText() {
-        return optionText;
-    }
-
-    public void setOptionText(String optionText) {
-        this.optionText = optionText;
-    }
 }
