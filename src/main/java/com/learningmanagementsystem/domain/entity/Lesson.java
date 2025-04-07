@@ -1,9 +1,12 @@
 package com.learningmanagementsystem.domain.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.Fetch;
 
 import java.util.List;
 
@@ -36,13 +39,15 @@ public class Lesson {
 
     @ManyToOne
     @JoinColumn(name = "module_id", insertable = false, updatable = false)
+    @JsonIgnore
     private Module module;
 
 //    @OneToMany(mappedBy = "lesson")
 //    private List<Assessment> assessments;
 
-    @OneToMany(mappedBy = "lesson")
-    private List<Content> contents;
+//    @OneToMany(mappedBy = "lesson")
+//    @JsonManagedReference
+//    private List<Content> contents;
 
 
 }

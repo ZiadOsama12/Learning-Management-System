@@ -19,7 +19,6 @@ public class GetUserProgressUseCase {
     public Progress execute(int courseId) {
         String username = SecurityContextHolder.getContext().getAuthentication().getName();
         Users user = myUserRepo.findByUsername(username);
-        System.out.println("IDDDDDDD " + user.getId());
         Progress progress = progressRepo.findById(new ProgressKey((long) user.getId(), (long) courseId)).orElse(null);
         return progress;
     }
