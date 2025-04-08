@@ -5,12 +5,14 @@ import com.learningmanagementsystem.application.service.MyUserDetailsService;
 import com.learningmanagementsystem.application.service.UserService;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.web.csrf.CsrfToken;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
+@Log4j2
 @RequestMapping("/api/v1")
 public class AuthenticationController {
 
@@ -31,6 +33,7 @@ public class AuthenticationController {
 
     @PostMapping("/login")
     public ResponseEntity<?> login(@RequestBody Users user) {
+        log.info("Login attempt-------");
         return ResponseEntity.ok(userService.verify(user));
     }
 

@@ -1,0 +1,75 @@
+2025-04-08 17:27:15,325 INFO o.s.b.StartupInfoLogger [main] Starting LearningManagementSystemApplication using Java 21.0.2 with PID 20040 (D:\Full\JAVA\TrainingProjects\springbootApps\FullApps\Learning-Management-System\target\classes started by ziado in D:\Full\JAVA\TrainingProjects\springbootApps\FullApps\Learning-Management-System)
+2025-04-08 17:27:15,331 INFO o.s.b.SpringApplication [main] No active profile set, falling back to 1 default profile: "default"
+2025-04-08 17:27:17,237 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-04-08 17:27:17,314 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Finished Spring Data repository scanning in 70 ms. Found 9 JPA repository interfaces.
+2025-04-08 17:27:17,999 INFO o.s.b.w.e.t.TomcatWebServer [main] Tomcat initialized with port 8080 (http)
+2025-04-08 17:27:18,011 INFO o.a.j.l.DirectJDKLog [main] Initializing ProtocolHandler ["http-nio-8080"]
+2025-04-08 17:27:18,012 INFO o.a.j.l.DirectJDKLog [main] Starting service [Tomcat]
+2025-04-08 17:27:18,012 INFO o.a.j.l.DirectJDKLog [main] Starting Servlet engine: [Apache Tomcat/10.1.36]
+2025-04-08 17:27:18,055 INFO o.a.j.l.DirectJDKLog [main] Initializing Spring embedded WebApplicationContext
+2025-04-08 17:27:18,056 INFO o.s.b.w.s.c.ServletWebServerApplicationContext [main] Root WebApplicationContext: initialization completed in 2687 ms
+2025-04-08 17:27:18,346 INFO c.z.h.HikariDataSource [main] HikariPool-1 - Starting...
+2025-04-08 17:27:18,803 INFO c.z.h.p.HikariPool [main] HikariPool-1 - Added connection ConnectionID:1 ClientConnectionId: 4f5d0805-1e9e-41a2-b421-b58e91344676
+2025-04-08 17:27:18,804 INFO c.z.h.HikariDataSource [main] HikariPool-1 - Start completed.
+2025-04-08 17:27:18,856 INFO o.h.j.i.u.LogHelper [main] HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-04-08 17:27:18,911 INFO o.h.Version [main] HHH000412: Hibernate ORM core version 6.6.8.Final
+2025-04-08 17:27:18,939 INFO o.h.c.i.RegionFactoryInitiator [main] HHH000026: Second-level cache disabled
+2025-04-08 17:27:19,184 INFO o.s.o.j.p.SpringPersistenceUnitInfo [main] No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-04-08 17:27:19,701 INFO o.h.e.j.e.i.JdbcEnvironmentInitiator [main] HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 15.0
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-04-08 17:27:20,621 INFO o.h.e.t.j.p.i.JtaPlatformInitiator [main] HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-04-08 17:27:20,623 INFO o.s.o.j.AbstractEntityManagerFactoryBean [main] Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-04-08 17:27:20,973 INFO o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer [main] Global AuthenticationManager configured with UserDetailsService bean with name myUserDetailsService
+2025-04-08 17:27:21,071 INFO o.s.d.j.r.q.QueryEnhancerFactory [main] Hibernate is in classpath; If applicable, HQL parser will be used.
+2025-04-08 17:27:21,555 WARN o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration [main] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-04-08 17:27:21,984 INFO o.s.b.a.e.w.EndpointLinksResolver [main] Exposing 1 endpoint beneath base path '/actuator'
+2025-04-08 17:27:22,061 DEBUG o.s.s.w.DefaultSecurityFilterChain [main] Will secure any request with filters: DisableEncodeUrlFilter, WebAsyncManagerIntegrationFilter, SecurityContextHolderFilter, HeaderWriterFilter, LogoutFilter, JwtFilter, UsernamePasswordAuthenticationFilter, DefaultResourcesFilter, DefaultLoginPageGeneratingFilter, DefaultLogoutPageGeneratingFilter, BasicAuthenticationFilter, RequestCacheAwareFilter, SecurityContextHolderAwareRequestFilter, AnonymousAuthenticationFilter, SessionManagementFilter, ExceptionTranslationFilter, AuthorizationFilter
+2025-04-08 17:27:22,460 INFO o.a.j.l.DirectJDKLog [main] Starting ProtocolHandler ["http-nio-8080"]
+2025-04-08 17:27:22,480 INFO o.s.b.w.e.t.TomcatWebServer [main] Tomcat started on port 8080 (http) with context path '/'
+2025-04-08 17:27:22,494 INFO o.s.b.StartupInfoLogger [main] Started LearningManagementSystemApplication in 7.49 seconds (process running for 8.764)
+2025-04-08 17:27:23,262 INFO o.a.j.l.DirectJDKLog [RMI TCP Connection(4)-192.168.1.10] Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-04-08 17:27:23,263 INFO o.s.w.s.FrameworkServlet [RMI TCP Connection(4)-192.168.1.10] Initializing Servlet 'dispatcherServlet'
+2025-04-08 17:27:23,265 INFO o.s.w.s.FrameworkServlet [RMI TCP Connection(4)-192.168.1.10] Completed initialization in 2 ms
+2025-04-08 17:27:32,508 DEBUG o.s.s.w.FilterChainProxy [http-nio-8080-exec-1] Securing POST /api/v1/login
+2025-04-08 17:27:32,517 DEBUG o.s.s.w.a.AnonymousAuthenticationFilter [http-nio-8080-exec-1] Set SecurityContextHolder to anonymous SecurityContext
+2025-04-08 17:27:32,522 DEBUG o.s.s.w.FilterChainProxy [http-nio-8080-exec-1] Secured POST /api/v1/login
+2025-04-08 17:27:32,567 INFO c.l.p.c.AuthenticationController [http-nio-8080-exec-1] Login attempt-------
+2025-04-08 17:27:32,741 DEBUG o.h.e.j.s.SqlStatementLogger [http-nio-8080-exec-1] 
+    select
+        u1_0.id,
+        u1_0.password,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.username=?
+2025-04-08 17:27:32,758 TRACE o.h.t.d.JdbcBindingLogging [http-nio-8080-exec-1] binding parameter (1:VARCHAR) <- [ziad5]
+2025-04-08 17:27:32,937 DEBUG o.h.e.j.s.SqlStatementLogger [http-nio-8080-exec-1] 
+    select
+        r1_0.user_id,
+        r1_0.role_id,
+        r2_0.id,
+        r2_0.created_at,
+        r2_0.description,
+        r2_0.name,
+        r2_0.updated_at 
+    from
+        user_roles r1_0 
+    left join
+        roles r2_0 
+            on r2_0.id=r1_0.role_id 
+    where
+        r1_0.user_id=?
+2025-04-08 17:27:32,937 TRACE o.h.t.d.JdbcBindingLogging [http-nio-8080-exec-1] binding parameter (1:INTEGER) <- [3]
+2025-04-08 17:27:33,241 DEBUG o.s.s.a.d.AbstractUserDetailsAuthenticationProvider [http-nio-8080-exec-1] Authenticated user
+2025-04-08 17:28:00,257 INFO o.s.b.w.e.t.GracefulShutdown [SpringApplicationShutdownHook] Commencing graceful shutdown. Waiting for active requests to complete
+2025-04-08 17:28:00,270 INFO o.s.b.w.e.t.GracefulShutdown [tomcat-shutdown] Graceful shutdown complete
+2025-04-08 17:28:00,277 INFO o.s.o.j.AbstractEntityManagerFactoryBean [SpringApplicationShutdownHook] Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-04-08 17:28:00,279 INFO c.z.h.HikariDataSource [SpringApplicationShutdownHook] HikariPool-1 - Shutdown initiated...
+2025-04-08 17:28:00,283 INFO c.z.h.HikariDataSource [SpringApplicationShutdownHook] HikariPool-1 - Shutdown completed.
