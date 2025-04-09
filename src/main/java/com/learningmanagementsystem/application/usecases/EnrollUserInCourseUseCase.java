@@ -4,6 +4,8 @@ import com.learningmanagementsystem.domain.entity.Course;
 import com.learningmanagementsystem.domain.entity.Enrollment;
 import com.learningmanagementsystem.domain.entity.EnrollmentKey;
 import com.learningmanagementsystem.domain.entity.Users;
+import com.learningmanagementsystem.domain.exception.BusinessRuleViolationException;
+import com.learningmanagementsystem.domain.exception.EntityNotFoundException;
 import com.learningmanagementsystem.domain.repository.CourseRepo;
 import com.learningmanagementsystem.domain.repository.EnrollmentRepo;
 import com.learningmanagementsystem.domain.repository.MyUserRepo;
@@ -33,11 +35,12 @@ public class EnrollUserInCourseUseCase {
         Users user = userRepo.findByUsername(username);
 
         Course course = courseRepo.findById(courseId)
-                .orElseThrow(() -> new RuntimeException("Course not found"));
+                .orElseThrow(() -> new EntityNotFoundException("Course", "id", courseId));
 
         EnrollmentKey enrollmentId = new EnrollmentKey( user.getId(), courseId);
         if (enrollmentRepo.existsById(enrollmentId)) {
-            throw new RuntimeException("User is already enrolled in this course");
+            throw new BusinessRuleViolationException("User is already enrolled in this course",
+                    "");
         }
 
 

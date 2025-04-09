@@ -6,6 +6,7 @@ import com.learningmanagementsystem.application.usecases.CreateCourseUseCase;
 import com.learningmanagementsystem.application.usecases.GetLessonAssessmentsUseCase;
 import com.learningmanagementsystem.application.usecases.GetCourseUseCase;
 import com.learningmanagementsystem.domain.entity.Course;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -27,7 +28,7 @@ public class CourseController {
     }
 
     @PostMapping()
-    public ResponseEntity<?> createCourse(@RequestBody CreateCourseRequestDTO course) {
+    public ResponseEntity<?> createCourse(@RequestBody @Valid CreateCourseRequestDTO course) {
         System.out.println("Create Course Request---------------------------");
         System.out.println(course);
 

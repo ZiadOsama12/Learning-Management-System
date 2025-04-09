@@ -2,6 +2,7 @@ package com.learningmanagementsystem.application.service;
 
 import com.learningmanagementsystem.application.dto.JwtResponseDTO;
 import com.learningmanagementsystem.domain.entity.Users;
+import com.learningmanagementsystem.domain.exception.EntityNotFoundException;
 import com.learningmanagementsystem.domain.repository.MyUserRepo;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -94,7 +95,8 @@ public class UserService {
         throw new RuntimeException("Invalid refresh token");
     }
     public Users findById(int id) {
-        return userRepo.findById((long) id).orElse(null);
+        return userRepo.findById((long) id).orElseThrow(
+                () -> new EntityNotFoundException("User", "id", (long) id));
     }
 }
 

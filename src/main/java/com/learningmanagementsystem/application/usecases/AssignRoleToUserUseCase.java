@@ -6,6 +6,7 @@ import com.learningmanagementsystem.domain.entity.Role;
 import com.learningmanagementsystem.domain.entity.UserRole;
 import com.learningmanagementsystem.domain.entity.UserRoleId;
 import com.learningmanagementsystem.domain.entity.Users;
+import com.learningmanagementsystem.domain.exception.EntityNotFoundException;
 import com.learningmanagementsystem.domain.repository.MyUserRepo;
 import com.learningmanagementsystem.domain.repository.RoleRepo;
 import com.learningmanagementsystem.domain.repository.UserRoleRepo;
@@ -29,10 +30,12 @@ public class AssignRoleToUserUseCase {
     private UserRoleRepo userRoleRepo;
 
     public Users execute(AssignRoleRequestDTO assignRoleRequestDTO) {
-        Users user = userRepo.findByUsername(assignRoleRequestDTO.getUsername());
+
+        String username = assignRoleRequestDTO.getUsername();
+        Users user = userRepo.findByUsername(username);
 
         if (user == null) {
-            throw new RuntimeException("User not found with username: " + assignRoleRequestDTO.getUsername());
+            throw new EntityNotFoundException("User", "username", username);
         }
 
         Set<UserRole> userRoles = user.getRoles(); // current roles
@@ -43,7 +46,7 @@ public class AssignRoleToUserUseCase {
         for (String roleName : assignRoleRequestDTO.getRolesNames()) {
             Role role = roleRepo.findByName(roleName);
             if (role == null) {
-                throw new RuntimeException("Role not found: " + roleName);
+                throw new EntityNotFoundException("Role", "Name", roleName);
             }
 
             // create composite key

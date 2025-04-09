@@ -2,6 +2,7 @@ package com.learningmanagementsystem.application.usecases;
 
 import com.learningmanagementsystem.application.dto.SendNotificationRequestDTO;
 import com.learningmanagementsystem.domain.entity.Notification;
+import com.learningmanagementsystem.domain.exception.EntityNotFoundException;
 import com.learningmanagementsystem.domain.repository.MyUserRepo;
 import com.learningmanagementsystem.domain.repository.NotificationRepo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,7 +19,7 @@ public class SendNotificationUseCase {
 
         int userId = sendNotificationRequestDTO.getUserId();
         if (!myUserRepo.existsById((long) userId)) {
-            throw new RuntimeException("User not found");
+            throw new EntityNotFoundException("User", "id", userId);
         }
 
         Notification notification = new Notification();

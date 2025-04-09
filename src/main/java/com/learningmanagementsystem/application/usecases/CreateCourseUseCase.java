@@ -5,6 +5,7 @@ import com.learningmanagementsystem.application.dto.CreateCourseResponseDTO;
 import com.learningmanagementsystem.application.mappers.CourseMapper;
 import com.learningmanagementsystem.domain.entity.Course;
 import com.learningmanagementsystem.domain.entity.Users;
+import com.learningmanagementsystem.domain.exception.EntityNotFoundException;
 import com.learningmanagementsystem.domain.repository.CourseRepo;
 import com.learningmanagementsystem.domain.repository.MyUserRepo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,6 +28,9 @@ public class CreateCourseUseCase {
 
         // Fetch full user entity
         Users instructor = myUserRepo.findByUsername(username);
+        if(instructor == null) {
+            throw new EntityNotFoundException("User", "username", username);
+        }
         course.setInstructor(instructor);
         System.out.println(course);
 
