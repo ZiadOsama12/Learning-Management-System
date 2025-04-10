@@ -13,6 +13,7 @@ public class ValidationException extends RuntimeException {
         this.errors = errors;
     }
 
+
     public ValidationException(String message, Throwable cause, List<String> errors) {
         super(message, cause);
         this.errors = errors;
