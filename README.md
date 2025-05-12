@@ -58,7 +58,7 @@ A backend Learning Management System built using **Java**, **Spring Boot**, and 
 
 ### Prerequisites
 
-* Java 17  
+* Java 21  
 * Maven
 * MS SQL Server
 * Postman (for testing API)
